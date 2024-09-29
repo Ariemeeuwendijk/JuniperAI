@@ -77,11 +77,39 @@
             else if (userInput.startsWith("wat")) {
                 response = "Je hebt 'wat...' gevraagd. Kun je je vraag iets specifieker maken?";
                 
-                if (userInput.includes("is")) {
+                if (userInput.includes("is") || userInput.includes("ijn")) {
                     response = "Je hebt 'wat is...' gevraagd. Kun je je vraag verduidelijken?";
                     
-                    if (userInput.includes("berg") || userInput.includes("gebergte")) {
-                        response = "Een berg is een uitgedrukt stuk land, veroorzaakt door aardplaatbewegingen.";
+                    //Aardrijkskunde
+
+                    //geen lidwoord
+                    if (userInput.includes("evolkings") || userInput.includes("ichth")) {
+                        response = "Dit begrip verwijst naar het aantal mensen dat per vierkante kilometer woont in een bepaald gebied. In dichtbevolkte gebieden, zoals steden, kan de bevolkingsdichtheid hoog zijn, terwijl het op het platteland vaak lager is.";
+                    }
+                    if (userInput.includes("odem") ||userInput.includes("erosi")) {
+                        response = "Dit gebeurt als de bovenste laag grond verdwijnt door regen of wind, waardoor de grond minder vruchtbaar wordt en planten minder goed groeien.";
+                    }
+                    if (userInput.includes("ardpla")) {
+                        response = "Grote stukken van de aardkorst die bewegen. De interactie tussen deze platen kan leiden tot aardbevingen, vulkanisme en het ontstaan van bergen.";
+                    }
+
+
+                    //de lidwoord vragen
+                    if (userInput.includes("een") || userInput.includes("de")) {
+                        response = "Je hebt 'wat is een...' gevraagd. Kun je je vraag verduidelijken?";
+
+                        if (userInput.includes("berg") || userInput.includes("geberg")) {
+                            response = "Een berg is een uitgedrukt stuk land, veroorzaakt door aardplaatbewegingen.";
+                        }
+                        if (userInput.includes("ontinent")) {
+                            response = "De grote landmassa's op de aarde, zoals Europa, Azië en Afrika. Elk continent heeft zijn eigen klimaat, dieren en mensen.";
+                        }
+                        if (userInput.includes("ardbe") || userInput.includes("bevin")) {
+                            response = "Een plotselinge schok in de aarde, veroorzaakt door de beweging van tectonische platen. Aardbevingen kunnen leiden tot schade aan gebouwen en infrastructuur.";
+                        }
+                        if (userInput.includes("ardkor")) {
+                            response = " De buitenste laag van de aarde, die bestaat uit vaste rotsen en mineralen. Deze laag is relatief dun in vergelijking met de andere lagen van de aarde.";
+                        }
                     }
                 }
             }
