@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juniper AI</title>
+    <link rel="stylesheet" href="JuniperAI.css">
+    <script>
+        function processInput() {
+            const userInput = document.getElementById('userInput').value.trim().toLowerCase();
+            let response = "";
+            
+            //superkort korter dan 3 tekens
+            if (userInput.startsWith("yo")) {
+                response = "Yo! Hoe kan ik je helpen?";
+            } else if (userInput.startsWith("hoi")) {
+                response = "Hoi! Waar kan ik je mee helpen?";
+
+            // Controleer of de input korter is dan 3 tekens
+            } else if (userInput.length < 4) {
+                response = "";
+
+            // Losse cases
+            } else if (userInput.includes("hallo ezel")) {
+                response = "Dat is niet aardig, waar kan ik je mee helpen?";
+            } else if (userInput.startsWith("halo") || userInput.startsWith("allo") || userInput.includes("alo")) {
+                response = "Hallo! Er zit wel een spellingsfout, hoe kan ik je helpen?";
+            } else if (userInput.includes("urtl") || userInput.includes("schil") || userInput.includes("dpad") || userInput.includes("utle")) {
+                response = "Schildpadden (Testudines) zijn een orde van reptielen met een vaak stevig schild.";
+            } else if (userInput.includes("ezel") || userInput.includes("ezle")) {
+                response = "Een ezel is een zoogdier dat voornamelijk bekend staat om zijn koppigheid.";
+
+            // Schelden
+            } else if (userInput.includes("fuk") || userInput.startsWith("fuk") || userInput.includes("fuck") || userInput.includes("shit")) {
+                response = "Dat is niet aardig, waarmee kan ik je helpen?";
+
+            // Begroetingen
+            } else if (userInput.startsWith("hallo") || userInput.startsWith("hoi") && userInput.length < 5) {
+                response = "Hallo! Hoe kan ik je helpen?";
+            } else if (userInput.startsWith("yo")) {
+                response = "Yo! Hoe kan ik je helpen?";
+            } else if (userInput.includes("hoe oud ben je") || userInput.includes("wanneer ben je gemaakt")) {
+                response = "Ik ben gemaakt op Donderdag, 26 September 2024 om 21:42.";
+            }
+
+            // De 'wie' vragen
+            else if (userInput.startsWith("wie") || userInput.startsWith("wi") || userInput.startsWith("who")) {
+                response = "Je hebt iets met 'wie' gezegd, kun je de vraag verduidelijken?";
+                
+                if (userInput.includes("is")) {
+                    response = "Je vraagt 'wie is', wat wil je weten?";
+                    
+                    if (userInput.includes("president")) {
+                        response = "De president hangt af van het land waar je naar vraagt!";
+                    } else if (userInput.includes("koning")) {
+                        response = "De koning van Nederland is Willem-Alexander.";
+                    } else if (userInput.includes("ibrahim") || userInput.includes("ibi")) {
+                        response = "Ibrahim(i) Y(oghurt)ahya E(rwten)weida is een vriend van Harry.";
+                    } else if (userInput.includes("olivier") || userInput.includes("livie") || userInput.includes("oli")) {
+                        response = "Olivier is een vriend van Harry.";
+                    } else if (userInput.includes("ryan") || userInput.includes("der haak")) {
+                        response = "Ryan Van Der Haak is Harry's vriend en de maker van mijn vriend (Arya).";
+                    } else if (userInput.includes("ralph") || userInput.includes("alph")) {
+                        response = "Ralph Dekker is Harry's vriend.";
+                    }
+                } 
+                    if (userInput.includes("ben")) {
+                    response = "Je vraagt 'wie ben...', wat wil je weten over mij?";
+
+                    if (userInput.includes("je") || userInput.includes("jij")) {
+                        response = "Ik ben Juniper AI. Bedacht en ontworpen om je te helpen! Als je nog iets te vragen heb, kun je het gerust stellen aan mij! Ik sta altijd klaar voor vragen! ";
+                    }
+                }
+            }
+
+            // 'Wat' vragen
+            else if (userInput.startsWith("wat")) {
+                response = "Je hebt 'wat...' gevraagd. Kun je je vraag iets specifieker maken?";
+                
+                if (userInput.includes("is")) {
+                    response = "Je hebt 'wat is...' gevraagd. Kun je je vraag verduidelijken?";
+                    
+                    if (userInput.includes("berg") || userInput.includes("gebergte")) {
+                        response = "Een berg is een uitgedrukt stuk land, veroorzaakt door aardplaatbewegingen.";
+                    }
+                }
+            }
+
+            // Algemene else voor wanneer geen enkele voorwaarde matcht
+            else {
+                response = "Sorry, ik begrijp je vraag niet. Kun je iets anders proberen?";
+            }
+
+            // Typewriter effect toepassen
+            document.getElementById('response').innerHTML = "";  // Reset de response
+            typeWriter(response, 0);  // Start het typewriter effect
+            document.getElementById('userInput').value = '';  // Reset het invoerveld
+        }
+
+        // Typewriter effect functie
+        function typeWriter(text, i) {
+            if (i < text.length) {
+                document.getElementById('response').innerHTML += text.charAt(i);
+                i++;
+                setTimeout(function() {
+                    typeWriter(text, i);
+                }, 7);  // Snelheid van het typewriter effect
+            }
+        }
+
+        window.onload = function() {
+            document.getElementById('userInput').addEventListener("keydown", function(event) {
+                if (event.key === "Enter") {
+                    processInput(); // Roep de functie aan wanneer Enter wordt ingedrukt
+                }
+            });
+        };
+    </script>
+</head>
+<body>
+    <div class="chatBox">
+        <h1>Juniper AI</h1>
+        <input type="text" id="userInput" placeholder="Voer hier je vraag in">
+        <button onclick="processInput()">Verstuur</button>
+        <p id="response"></p>
+    </div>
+</body>
+</html>
