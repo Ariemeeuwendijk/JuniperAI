@@ -1,1 +1,1 @@
-Deze Site is gemaakt door CodeX team. Als de pagina niet bevindt, kunnen we er niks aan doen. 
+Deze Site is gemaakt door CodeX team. Als de pagina niet bevindt, zet er dan achter de slash van juniperai, juniperai.html. 
