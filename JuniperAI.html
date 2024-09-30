@@ -9,6 +9,7 @@
         function processInput() {
             const userInput = document.getElementById('userInput').value.trim().toLowerCase();
             let response = "";
+            let ak = 0
             
             //superkort korter dan 3 tekens
             if (userInput.startsWith("yo")) {
@@ -17,7 +18,7 @@
                 response = "Hoi! Waar kan ik je mee helpen?";
 
             // Controleer of de input korter is dan 3 tekens
-            } else if (userInput.length < 4) {
+            } else if (userInput.length < 3) {
                 response = "";
 
             // Losse cases
@@ -29,6 +30,9 @@
                 response = "Schildpadden (Testudines) zijn een orde van reptielen met een vaak stevig schild.";
             } else if (userInput.includes("ezel") || userInput.includes("ezle")) {
                 response = "Een ezel is een zoogdier dat voornamelijk bekend staat om zijn koppigheid.";
+            } else if (userInput.includes("arry")) {
+                response = "Harry Jia (lid van CodeX), is de bedenker van mij.";
+            
 
             // Schelden
             } else if (userInput.includes("fuk") || userInput.startsWith("fuk") || userInput.includes("fuck") || userInput.includes("shit")) {
@@ -46,8 +50,23 @@
             // De 'wie' vragen
             else if (userInput.startsWith("wie") || userInput.startsWith("wi") || userInput.startsWith("who")) {
                 response = "Je hebt iets met 'wie' gezegd, kun je de vraag verduidelijken?";
+
+                if (userInput.includes("hebbe") || userInput.includes("heef")) {
+                    response = "Je vraagt waarschijnlijk naar wie iets heeft, kun je het verduidelijken?";
+
+                    if (userInput.includes("jou gemaakt") || userInput.includes("je gemaakt")) {
+                        response = "Mijn ere maker/bedenker is het CodeX team.";
+                    }
+                }
+                if (userInput.startsWith("ben")) {
+                    response = "Je vraagt 'wie ben...', wat wil je weten over mij?";
+
+                    if (userInput.includes("je") || userInput.includes("jij")) {
+                        response = "Ik ben Juniper AI. Bedacht en ontworpen door het CodeX team     om je te helpen! Als je nog iets te vragen heb, kun je het gerust stellen aan mij! Ik sta altijd klaar voor vragen! ";
+                    }
+                }
                 
-                if (userInput.includes("is")) {
+                if (userInput.includes("is") || userInput.includes("zijn")) {
                     response = "Je vraagt 'wie is', wat wil je weten?";
                     
                     if (userInput.includes("president")) {
@@ -55,45 +74,42 @@
                     } else if (userInput.includes("koning")) {
                         response = "De koning van Nederland is Willem-Alexander.";
                     } else if (userInput.includes("ibrahim") || userInput.includes("ibi")) {
-                        response = "Ibrahim(i) Y(oghurt)ahya E(rwten)weida is een vriend van Harry.";
-                    } else if (userInput.includes("olivier") || userInput.includes("livie") || userInput.includes("oli")) {
-                        response = "Olivier is een vriend van Harry.";
+                        response = "Ibrahim(i) Y(oghurt)ahya E(rwten)weida is een vriend van Harry, en een zeer grote Ezel.";
                     } else if (userInput.includes("ryan") || userInput.includes("der haak")) {
                         response = "Ryan Van Der Haak is Harry's vriend en de maker van mijn vriend (Arya).";
                     } else if (userInput.includes("ralph") || userInput.includes("alph")) {
                         response = "Ralph Dekker is Harry's vriend.";
+                    } else if (userInput.includes("arry")) {
+                        response = "Harry Jia (lid van CodeX), is de bedenker van mij.";
                     }
                 } 
-                    if (userInput.includes("ben")) {
-                    response = "Je vraagt 'wie ben...', wat wil je weten over mij?";
-
-                    if (userInput.includes("je") || userInput.includes("jij")) {
-                        response = "Ik ben Juniper AI. Bedacht en ontworpen om je te helpen! Als je nog iets te vragen heb, kun je het gerust stellen aan mij! Ik sta altijd klaar voor vragen! ";
-                    }
-                }
             }
 
             // 'Wat' vragen
             else if (userInput.startsWith("wat")) {
                 response = "Je hebt 'wat...' gevraagd. Kun je je vraag iets specifieker maken?";
+                let ak = 1
                 
                 if (userInput.includes("is") || userInput.includes("ijn")) {
                     response = "Je hebt 'wat is...' gevraagd. Kun je je vraag verduidelijken?";
-                    
+                
+            
                     //Aardrijkskunde
 
                     //geen lidwoord
                     if (userInput.includes("evolkings") || userInput.includes("ichth")) {
                         response = "Dit begrip verwijst naar het aantal mensen dat per vierkante kilometer woont in een bepaald gebied. In dichtbevolkte gebieden, zoals steden, kan de bevolkingsdichtheid hoog zijn, terwijl het op het platteland vaak lager is.";
-                    }
+                    } 
                     if (userInput.includes("odem") ||userInput.includes("erosi")) {
                         response = "Dit gebeurt als de bovenste laag grond verdwijnt door regen of wind, waardoor de grond minder vruchtbaar wordt en planten minder goed groeien.";
                     }
                     if (userInput.includes("ardpla")) {
                         response = "Grote stukken van de aardkorst die bewegen. De interactie tussen deze platen kan leiden tot aardbevingen, vulkanisme en het ontstaan van bergen.";
+                    } 
+                    if (userInput.includes("iodiver") || userInput.includes("iversitei")) {
+                        response = "De verscheidenheid aan levensvormen binnen een ecosysteem. Dit omvat verschillende soorten planten, dieren en micro-organismen.";
                     }
-
-
+             
                     //de lidwoord vragen
                     if (userInput.includes("een") || userInput.includes("de")) {
                         response = "Je hebt 'wat is een...' gevraagd. Kun je je vraag verduidelijken?";
@@ -113,7 +129,6 @@
                     }
                 }
             }
-
             // Algemene else voor wanneer geen enkele voorwaarde matcht
             else {
                 response = "Sorry, ik begrijp je vraag niet. Kun je iets anders proberen?";
@@ -147,7 +162,7 @@
 </head>
 <body>
     <div class="chatBox">
-        <h1>Juniper AI</h1>
+        <h1>Juniper AI <h4>v0.1.2</h4></h1>
         <input type="text" id="userInput" placeholder="Voer hier je vraag in">
         <button onclick="processInput()">Verstuur</button>
         <p id="response"></p>
